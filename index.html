@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HTTP Get Request using PHP/JSON</title>
+
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+        <link href="geoproject/css/geocss.css" rel="stylesheet" type="text/css">
+    <!--postcode from input is sent to php to collect the postcode results-->
+	<script>
+	  function postcode_search(){
+		var postcode=$("#ip_address").val();
+		$.get("geoproject/php/geoget.php",{postcode:postcode},
+		function(data){
+		  $("#json_result").html(data);
+		});
+	}
+	</script>
+    </head>
+    <body>
+        <div class="header">
+        <h2>HTTP Get Request using PHP/JSON</h2>
+        </div>
+
+        <!--displays the results from function-->
+        <div class="search">
+            Enter a Post Code : <input name="ip_address" id="ip_address" type="text" placeholder="Use no spaces"><br>
+        <input type="button" value="Submit" onclick="postcode_search()">
+        </div>
+        
+        <div>
+            <table class="table">
+                <tr>
+                    <td id="json_result"></td>
+                </tr>
+            </table>
+        </div>
+        
+        <script src="vendors/jquery/jquery.min.js"></script>
+        <script src="vendors/bootstrap/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
